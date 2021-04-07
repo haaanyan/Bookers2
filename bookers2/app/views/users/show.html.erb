@@ -1,8 +1,2 @@
-<h1>User info</h1>
 
-<div class="profile-container">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format:'jpeg', fallback:"no_image.jpg" %>
-    <h4 class="profile-name"><%=@user.name %></h4>
-    <h4 class="introduction"><%=@user.introduction %></h4>
-
-</div>
+<%= render 'users/user',user:@user %>

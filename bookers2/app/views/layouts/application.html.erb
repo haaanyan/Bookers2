@@ -28,6 +28,17 @@
         <% end %>
       </li>
       <li class="nav-item">
+        <%= link_to users_path, class:'nav-link' do %>
+        <i class="fas fa-users"> Users</i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to books_path, class:'nav-link' do %>
+        <i class="fas fa-book-open"> Books</i>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
         <%= link_to destroy_user_session_path, method: :delete, class:'nav-link' do %>
         <i class="fas fa-sign-out-alt"> lognout</i>
         <% end %>
