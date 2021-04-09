@@ -27,3 +27,16 @@
 .body {
   margin: 55px 10% 0px 8%;
 }
+
+.Notification {
+  .notice {
+    color: green;
+  }
+  .alert {
+    color: red;
+  }
+}
+
+.error {
+  color: red;
+}

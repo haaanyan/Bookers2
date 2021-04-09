@@ -26,8 +26,12 @@ end
 
 def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+if  @user.update(user_params)
+        flash[:notice]="You have update user successfully."
     redirect_to user_path(current_user)
+else
+    render :edit
+end
 end
 
 private
