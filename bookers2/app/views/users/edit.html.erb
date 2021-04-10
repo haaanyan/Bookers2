@@ -1,5 +1,8 @@
 <div class="container">
 <div class="row">
+  <div class="mx-auto">
+
+
   <%= form_with model: @user, local:true do |f| %>
 <div class="error">
   <% if @user.errors.any? %>
@@ -11,18 +14,20 @@
   </ul>
   <% end %>
   </div>
-
 <h1>User info</h1>
 <h5>Name</h5>
-<%= f.text_field :name %>
+<%= f.text_field :name, size: 30 %>
 <h5>Image</h5>
 <%= f.attachment_field :profile_image %>
 <h5>Introduction</h5>
-<%= f.text_area:introduction %>
+<%= f.text_area:introduction, size:"30x10" %>
 
-<%= f.submit 'Update User' %>
+<div class="form-group">
+  <input type="submit" name="commit" value="Create Book" class="btn btn-secondary" data-disable-with="Update User">
+</div>
 
 <% end %>
+</div>
 
  </div>
 </div>
