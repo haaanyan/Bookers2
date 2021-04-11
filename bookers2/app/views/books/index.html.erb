@@ -1,13 +1,15 @@
 
 <main>
 <div class="container">
+  <p><%= render 'books/error', model:@book %></p>
+
   <div class="row">
-    <div class="col-md-3">
-   <p><%= render 'users/user',user: @user %></p>
-   <p><%= render 'books/book', book: @book %></p>
+   <div class="col-md-3">
+    <p><%= render 'users/user',user: @user %></p>
+    <p><%= render 'books/book', book: @book %></p>
     </div>
 
-  <div class="col-md-9">
+  <div class="col-md-8 offset-md-1">
 <h2>Books</h2>
 <table class="table">
   <thead>

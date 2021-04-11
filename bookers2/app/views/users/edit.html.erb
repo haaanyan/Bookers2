@@ -6,13 +6,14 @@
   <%= form_with model: @user, local:true do |f| %>
 <div class="error">
   <% if @user.errors.any? %>
-  <h3><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved: </h3>
+  <h3><%= pluralize(@user.errors.count, "error") %> errors prohibited this obj from being saved: </h3>
   <ul>
   <% @user.errors.full_messages.each do |message| %>
   <%= message %>
   <% end %>
   </ul>
   <% end %>
+
   </div>
 <h1>User info</h1>
 <h5>Name</h5>
@@ -23,7 +24,7 @@
 <%= f.text_area:introduction, size:"30x10" %>
 
 <div class="form-group">
-  <input type="submit" name="commit" value="Create Book" class="btn btn-secondary" data-disable-with="Update User">
+  <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
 </div>
 
 <% end %>

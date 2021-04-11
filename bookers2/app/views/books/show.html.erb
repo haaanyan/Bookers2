@@ -1,17 +1,39 @@
 <main>
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-   <%= render 'users/user',user: @user %>
-   <%= render 'books/book', book: @newbook %>
-    </div>
+   <p><%= render 'books/error', model:@book %></p>
 
-<div class="col-md-9">
+
+   <div class="col-md-3">
+   <p><%= render 'users/user',user: @user %></p>
+
+   <%= form_with model:@book_new, local:true do |f| %>
+   <h2>New book</h2>
+
+  <div class="form-group">
+  <label for="book_title">Title</label>
+  <input class="form-control book_title" type="text" name="book[title]" id="book_title">
+  </div>
+
+  <div class="form-group">
+  <label for="book_opinion">Opinion</label>
+  <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+  </div>
+
+  <div class="form-group">
+  <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+  </div>
+<% end %>
+
+   </div>
+
+<div class="col-md-8 offset-md-1">
  <h2>Book detail</h2>
  <table class="table">
   <tr>
-    <td><%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %></td>
-    <td><%= link_to @user.name, user_path(@user) %></td>
+    <td><%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %><br>
+    <%= link_to @user.name, user_path(@user) %></td>
+
     <td><%= @book.title %></td>
     <td><%= @book.body %></td>
     <% if @book.user_id == current_user.id %>

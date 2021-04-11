@@ -1,0 +1,10 @@
+
+<div class="error">
+  <% if model.errors.any? %>
+   <h3><%= pluralize(model.errors.count,"error") %> prohibited this obj from being saved: </h3>
+   <% model.errors.full_messages.each do |message| %>
+    <ul><%= message %></ul>
+   <% end %>
+  <% end %>
+</div>
+
