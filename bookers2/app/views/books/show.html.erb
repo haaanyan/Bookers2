@@ -70,7 +70,7 @@
    <tr>
      <div>
     <td>
-   <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+   <%= attachment_image_tag book_comment.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
    <%= book_comment.user.name %>
     </td>
    <td><%= book_comment.comment %></td>
