@@ -7,6 +7,9 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
 
+  attachment :profile_image
+
+
   has_many :books, dependent: :destroy
   has_many :favorites
   has_many :book_comments, dependent: :destroy
@@ -30,7 +33,22 @@ class User < ApplicationRecord
 
   #フォロー機能ここまで
 
-  attachment :profile_image
+  def User.serch(search, model, how)
+    if model == "user"
+      if how == "partial_match"
+        User.where("name_LIKE?", "%#{search}%")
+      elsif how == "forward_match"
+         User.where("name LIKE?", "#{search}%")
+        elsif how == "backword_match"
+          User.where("name LIKE?", "%#{search}")
+          elsif how == "perfect_match"
+            User.where("name LIKE?", "#{search}")
 
+      end
+    end
+  end
 
 end
+
+
+

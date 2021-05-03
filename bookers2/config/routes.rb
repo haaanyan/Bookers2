@@ -18,4 +18,6 @@ end
 
   end
 
+  get '/search' => "searches#search"
+
 end
