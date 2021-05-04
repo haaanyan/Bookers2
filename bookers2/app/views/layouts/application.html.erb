@@ -71,11 +71,17 @@
      </div>
   </div>
 </nav>
-<%= render "searches/search" %>
+
 </header>
 
+<main>
+<% if user_signed_in? %>
+   <%= render "searches/search" %>
+   <% end %>
 
    <%= render 'layouts/notification' %>
+
+   </main>
 
 
 

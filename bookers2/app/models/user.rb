@@ -33,18 +33,16 @@ class User < ApplicationRecord
 
   #フォロー機能ここまで
 
-  def User.serch(search, model, how)
-    if model == "user"
-      if how == "partial_match"
-        User.where("name_LIKE?", "%#{search}%")
-      elsif how == "forward_match"
-         User.where("name LIKE?", "#{search}%")
-        elsif how == "backword_match"
-          User.where("name LIKE?", "%#{search}")
-          elsif how == "perfect_match"
-            User.where("name LIKE?", "#{search}")
 
-      end
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+        User.where(' name LIKE ?', content+'%')
+    elsif method == 'backward'
+          User.where('name LIKE ?', '%'+content)
+    else
+          User.where('name LIKE ?', '%'+content+'%')
     end
   end
 

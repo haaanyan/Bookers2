@@ -1,59 +1,15 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!
 
-def search
-  @model = params["search"]["model"]
-  @value = params["search"]["value"]
-  @how = params["search"]["how"]
-  @datas = search_for(@how, @model, @value)
-end
-
-private
-
-def match(model, value)
- if model == 'user'
-   User.where(name: value)
- elsif model == 'book'
-     Book.where(title: value)
- end 
-end
-
-def forward(model, value)
-  if model == 'User'
-    User.where("name LIKE ?", "#{value}%")
-  elsif model == 'book'
-      Book.where("title LIKE ?", "#{value}%")
-  end
-end
-
-def backward(model, value)
-  if model == 'user'
-    User.where("name LIKE ?", "%#{value}")
-  elsif model == 'book'
-    Book.where("title LIKE ?", "%#{value}")
-  end
-end
-
-  def partial(model, value)
-    if model == 'user'
-      User.where("name LIKE ?", "%#{value}%")
-    elsif model == 'book'
-      Book.where("title LIKE ?", "%#{value}%")
+  def search
+    @model = params[:model]
+    @content = params[:content]
+    @method = params[:method]
+    if @model == 'user'
+      @records = User.search_for(@content, @method)
+    else
+      @records = Book.search_for(@content, @method)
     end
+
   end
-  
-  def search_for(how, model, value)
-    case how
-    when 'match'
-      match(model, value)
-      when 'forward'
-        forward(model, value)
-          when 'backward'
-            backward(model, value)
-            when 'partial'
-              partial(model, value)
-    end
-  end
-
-
-
 end
