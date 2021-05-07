@@ -1,3 +1,4 @@
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0">
@@ -14,6 +15,26 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+   <%= f.label :postcode %><br />
+   <%= f.text_field :postcode, autocomplete: 'postcode' %>
+  </div>
+
+  <div class="field">
+   <%= f.label :prefecture %><br />
+   <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>
+  </div>
+
+  <div class="field">
+   <%= f.label :city %><br />
+   <%= f.text_field :city, autocomplete: 'city' %>
+  </div>
+
+  <div class="field">
+   <%= f.label :street %><br />
+   <%= f.text_field :street, autocomplete: 'street' %>
   </div>
 
   <div class="field">
