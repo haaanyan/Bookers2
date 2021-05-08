@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'chats/show'
   get 'searches/search'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
@@ -22,5 +23,9 @@ end
   end
 
   get '/search', to: 'searches#search'
+
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+  
 
 end

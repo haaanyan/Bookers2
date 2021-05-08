@@ -38,6 +38,11 @@
   </table>
  </div>
 
+   <% if current_user != @user %>
+    <%= link_to 'Chatを始める', chat_path(@user.id) %>
+    <% end %>
+
+
     <div class="row">
       <% if user == current_user %>
       <div class="col-10 mx-auto">
