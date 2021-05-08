@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   get 'searches/search'
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+  }
 
   root to: 'homes#top'
 
