@@ -6,4 +6,6 @@ class NotificationMailer < ApplicationMailer
     mail(to: email, subject: '会員登録が完了しました')
   end
 
+
+
 end
